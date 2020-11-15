@@ -27,3 +27,13 @@ and open the template in the editor.
     form.asignatio .form-group{
         padding: 5px 10px;
     }
+    
+    input.fullwidth{
+        width:100%!important;
+        margin-bottom: 20px!important;
+        
+    }
+    input.asign{
+        width: 50px!important;
+        flex:unset!important;
+    }

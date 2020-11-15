@@ -29,17 +29,23 @@ include CONT.'_profeAsignaController.php';
     <hr>
       
    <br>
-    <form class="asignatio">
+   <form class="asignatio" action="?pag=_profeAsignaView.php" method="post">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Profesor</label>
                   <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <?php
+                            if($totalProfesores>0){
+                            for ( $a = 0; $a<$totalProfesores; $a++){ ?>
+                                <option value="<?php echo $arrayProfes[$a][0]?>"><?php echo $arrayProfes[$a][1].' '.$arrayProfes[$a][2]?></option>    
+                            <?php }
+                            }else{?>
+                                <option value="">No hay profesores, hay que crearlos</option>
+                            
+                                <?php 
+                            }
+                            ?>
                   </select>
                 </div>
             </div>
@@ -47,11 +53,18 @@ include CONT.'_profeAsignaController.php';
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Asignatura</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                      <option>Matematicas 2</option>
-                      <option>Fisica 1</option>
-                      <option>Sociología</option>
-                      <option>Historia</option>
-                      <option>Optativa 1</option>
+                         <?php
+                            if($totalAsignaturas>0){
+                            for ( $a = 0; $a<$totalAsignaturas; $a++){?>
+                                <option value="<?php echo $arrayAsignaturas[$a][0]?>"><?php echo $arrayAsignaturas[$a][4].' '.$arrayAsignaturas[$a][2]?></option>    
+                            <?php
+                            }
+                            }else{ ?>
+                                  <option value="">No hay asignaturas, hay que crearlas</option>
+                            
+                                  <?php
+                                  }
+                            ?>
                     </select>
                    
                 </div>

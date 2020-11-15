@@ -12,19 +12,19 @@ include CONT.'_profesoresController.php';
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Crear Profesor</label>
                             <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
+                                <input required type="text" class="form-control" name="name" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-3">
-                            <input type="text" class="form-control" name ="surname" placeholder="Apellidos" aria-label="Apellidos" aria-describedby="basic-addon1">
+                            <input required type="text" class="form-control" name ="surname" placeholder="Apellidos" aria-label="Apellidos" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="tel" class="form-control" name="telephone" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1">
+                                <input required type="text" class="form-control" name="telephone" placeholder="Telefono" aria-label="Telefono" aria-describedby="basic-addon1">
                            </div>
                             <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="nif" placeholder="NIF" aria-label="NIF" aria-describedby="basic-addon1">
+                            <input required type="text" class="form-control" name="nif" placeholder="NIF" aria-label="NIF" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="emaiil" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                                <input required type="text" class="form-control" name="email" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
                             </div>
                         <button type="submit" class="btn btn-primary mb-2">Crear Profesor</button>
                     </div>
@@ -69,6 +69,7 @@ include CONT.'_profesoresController.php';
     <hr>
 
 <br>
+
 
    
 

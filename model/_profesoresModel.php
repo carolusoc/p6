@@ -32,11 +32,12 @@ function borraProfesor($id){
 
 function generaProfesor($nombre,$apellidos,$telefono,$nif,$email){
     $conn = conectar();
-    $sql = 'INSERT INTO teachers (NULL,'.$nombre.','.$apellidos.','.$telefono.','.$nif.','.$email.')';
+    $sql = "INSERT INTO teachers (name, surname, telephone, nif, email) VALUES ('$nombre','$apellidos','$telefono','$nif','$email')";
     $result = mysqli_query($conn, $sql);
     desconectar($conn);
-    
+
 }
+
 
 
 
