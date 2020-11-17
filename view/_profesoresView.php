@@ -39,7 +39,7 @@ include CONT.'_profesoresController.php';
                 </div>
             </div>
             
-        </div>
+     
     </form>
     <br>
 
@@ -86,7 +86,6 @@ include CONT.'_profesoresController.php';
 
 </div>
 
-</div>
 
 <script>
 if (window.history.replaceState) { // verificamos disponibilidad
