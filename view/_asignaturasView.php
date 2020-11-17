@@ -4,7 +4,7 @@ include CONT.'_asignaturasController.php';
 ?>
 <br>
 <div class="container-fluid">
-    <form e class="asignatio" action="?pag=_asignaturasView.php" method="post">
+    <form  class="asignatio" action="?pag=_asignaturasView.php" method="post">
         <div class="row">
             <div class="col-md-12">
              
@@ -43,7 +43,7 @@ include CONT.'_asignaturasController.php';
           
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Lista de Asignturas</label>
-                            <select name="borra-id-asigns" multiple class="form-control" id="exampleFormControlSelect1">
+                            <select name="borra-id-asigns"  class="form-control" id="exampleFormControlSelect1">
                             <?php
                             for ( $a = 0; $a<$totalAsignaturas; $a++){?>
                                 <option value="<?php echo $arrayAsignaturas[$a][0]?>"><?php echo $arrayAsignaturas[$a][4].' '.$arrayAsignaturas[$a][5]?><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></option>    

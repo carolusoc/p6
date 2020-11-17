@@ -20,6 +20,15 @@ function cargamosProfesores(){
 return mysqli_fetch_all($result);    
 }
 
+
+function nombreProfID($id){
+    $conn = conectar();
+    $sql = "SELECT * FROM  teachers WHERE id_teacher = '$id'  ";
+    $result = mysqli_query($conn, $sql);
+    desconectar($conn);
+return mysqli_fetch_all($result);    
+}
+
 function cargamosAsignaturas(){
     $conn = conectar();
     $sql = 'SELECT * FROM  class';
@@ -29,24 +38,36 @@ return mysqli_fetch_all($result);
 }
 
 
-function borraProfesor($id){
-    $conn = conectar();
-    $sql = 'DELETE FROM  teachers WHERE id_teacher="'.$id.'"';
-    $result = mysqli_query($conn, $sql);
-    desconectar($conn);
+function muestraAsignaciones(){
+     $conn = conectar();
+     $sql = "SELECT * FROM  class WHERE id_teacher <> 'NULL'";
+     $result = mysqli_query($conn, $sql);
+      desconectar($conn);
+return mysqli_fetch_all($result);    
+}
 
+
+function desasignaProfe($idteacher,$idclass){
     
+      $conn = conectar();
+      $sql = "UPDATE class SET id_teacher=NULL WHERE id_teacher='$idteacher' AND id_class='$idclass'";
+     $result = mysqli_query($conn, $sql);
+      desconectar($conn);
+//return mysqli_fetch_all($result);   
 }
-/*
-function generaProfesor($nombre,$apellidos,$telefono,$nif,$email){
-    $conn = conectar();
-    $sql = "INSERT INTO teachers (name, surname, telephone, nif, email) VALUES ('$nombre','$apellidos','$telefono','$nif','$email')";
-    $result = mysqli_query($conn, $sql);
-    desconectar($conn);
 
+function empareja($profesor, $clase){
+      $conn = conectar();
+     $sql = "UPDATE class SET id_teacher='$profesor' WHERE id_class='$clase'";
+      $result = mysqli_query($conn, $sql);
+      desconectar($conn);
+     
 }
-*/
 
+
+
+$totalAsignaciones = sizeof(muestraAsignaciones());
+$arrayAsignaciones = muestraAsignaciones();
 
 
 $arrayProfes = cargamosProfesores();

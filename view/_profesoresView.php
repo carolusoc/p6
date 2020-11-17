@@ -52,7 +52,7 @@ include CONT.'_profesoresController.php';
                 <div class="form-group">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Profesores</label>
-                            <select name="borra-id-profs" multiple class="form-control" id="exampleFormControlSelect1">
+                        <select name="borra-id-profs"  class="form-control" id="exampleFormControlSelect1">
                             <?php
                             for ( $a = 0; $a<$totalProfesores; $a++){?>
                                 <option value="<?php echo $arrayProfes[$a][0]?>"><?php echo $arrayProfes[$a][1].' '.$arrayProfes[$a][2]?></option>    

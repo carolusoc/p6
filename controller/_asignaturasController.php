@@ -26,6 +26,6 @@ if ( (isset($_POST['borra-id-asigns'])) &&  (isset($_POST['edita']))){
 
 if ( (isset($_POST['accion'])) && ($_POST['accion']=='Edita') ){
     actualizAsignatura($_POST['name'], $_POST['color'], $_POST['id']);
-      header("Location: ?pag=_asignaturasView.php");
+     
 
 }

@@ -1,21 +1,31 @@
 <?php
 include MOD.'_profeAsignaModel.php';
 include CONT.'_profeAsignaController.php';
+print_r($_POST);
 ?>
 <br>
- <div class="container-fluid">
-    <form class="asignatio">
+<div class="container-fluid">
+    <form class="asignatio" action="?pag=_profeAsignaView.php" method="post">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Asginaciones</label>
-                            <select multiple class="form-control" id="exampleFormControlSelect1">
-                            <option>Doña Urraca - Matematicas 2</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <input type='hidden' name='idclass' value=''>
+                            <select name='asignacion' multiple class="form-control" id="exampleFormControlSelect1">
+                                <?php 
+                                if ($totalAsignaciones>0){
+                                    for ($a=0;$a<$totalAsignaciones;$a++){ ?>
+                                        
+                                        <option value="<?php echo $arrayAsignaciones[$a][1].'|'.$arrayAsignaciones[$a][0]; ?>"><?php echo $arrayAsignaciones[$a][4].'--'.nombreProfID($arrayAsignaciones[$a][1])[0][1].'--'.nombreProfID($arrayAsignaciones[$a][1])[0][2]; ?></option>
+                                    <?php
+                                    }
+                                    }  else {
+                                ?>
+                                        <option>nada</option>
+                                <?php
+                                } ?>
+                                
                         </select>
                         <br>
                         <button type="submit" class="btn btn-primary mb-2">Borrar Asignación</button>
@@ -34,7 +44,7 @@ include CONT.'_profeAsignaController.php';
             <div class="col-sm-6">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Profesor</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
+                  <select name='profesor' class="form-control" id="exampleFormControlSelect1">
                     <?php
                             if($totalProfesores>0){
                             for ( $a = 0; $a<$totalProfesores; $a++){ ?>
@@ -52,11 +62,11 @@ include CONT.'_profeAsignaController.php';
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Asignatura</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select name="clase" class="form-control" id="exampleFormControlSelect1">
                          <?php
                             if($totalAsignaturas>0){
                             for ( $a = 0; $a<$totalAsignaturas; $a++){?>
-                                <option value="<?php echo $arrayAsignaturas[$a][0]?>"><?php echo $arrayAsignaturas[$a][4].' '.$arrayAsignaturas[$a][2]?></option>    
+                                <option value="<?php echo $arrayAsignaturas[$a][0]?>"><?php echo $arrayAsignaturas[$a][4];?></option>    
                             <?php
                             }
                             }else{ ?>
@@ -80,3 +90,10 @@ include CONT.'_profeAsignaController.php';
         </div>
     </form>
 </div>
+<script>
+if (window.history.replaceState) { // verificamos disponibilidad
+    window.history.replaceState(null, null, window.location.href);
+}
+
+
+</script>
