@@ -12,11 +12,11 @@ function desconectar($conexion) {
 }
 
 
-
-function cargamosProfesores(){
+/* MUESTRA TODOS LOS ALUMNOS QUE QUEDAN POR ASIGNAR CURSO. seleccionamos todos los estudiantes cuyo id no aparece en idstudent de enrollment */ 
+function alumnosSinCurso(){
     $conn = conectar();
     $out[] = '';
-    $sql = "SELECT * FROM  teachers WHERE asignado IS NULL";
+    $sql = "SELECT * FROM students WHERE id NOT IN(SELECT id_student FROM enrollment)";
     $result = mysqli_query($conn, $sql);
    while($resultado=mysqli_fetch_object($result)){
         $out[]=$resultado;
@@ -27,64 +27,88 @@ return $out;
     
 }
 
-
-function nombreProfID($id){
+/* visulaizacion de todos los cursos */
+function cargamosCursos(){
     $conn = conectar();
     $out[]='';
-    $sql = "SELECT * FROM  teachers WHERE id_teacher = '$id'  ";
+    $sql = 'SELECT * FROM  courses';
     $result = mysqli_query($conn, $sql);
     while($resultado=mysqli_fetch_object($result)){
-        $out[]=$resultado;
+    $out[]=$resultado;
     }
 
     desconectar($conn);
-return $out;         
+return $out;       
+    
 }
 
-/* carga todas las asignaturas*/
-function cargamosAsignaturas(){
+
+function uneAlumnoCurso ($idalumn,$idcurso){
+    $conn = conectar();
+   $sql = "INSERT INTO enrollment (id_student, id_course) VALUES ('$idalumn','$idcurso')";
+    $result = mysqli_query($conn, $sql);
+    desconectar($conn);
+        
+
+}
+
+function alumnoxID ($id){
     $conn = conectar();
     $out[]='';
-    $sql = 'SELECT * FROM  class';
-    $result = mysqli_query($conn, $sql);
+    $sql="SELECT name,surname,nif FROM students WHERE id ='$id' ";
+     $result = mysqli_query($conn, $sql);
     while($resultado=mysqli_fetch_object($result)){
-        $out[]=$resultado;
+    $out[]=$resultado;
     }
 
     desconectar($conn);
 return $out;       
+    
 }
 
-/* muestra asignaturas con profesor asignado */
-function muestraAsignaciones(){
+function cursoxID ($id){
      $conn = conectar();
-     $out[]='';
-     $sql = "SELECT * FROM  class WHERE id_teacher IS NOT NULL";
+    $out[]='';
+    $sql="SELECT name FROM courses WHERE id_course ='$id' ";
      $result = mysqli_query($conn, $sql);
-      while($resultado=mysqli_fetch_object($result)){
-        $out[]=$resultado;
+    while($resultado=mysqli_fetch_object($result)){
+    $out[]=$resultado;
+    }
+
+    desconectar($conn);
+return $out;       
+    
+    
+}
+
+function cargaMatriculas(){
+       $conn = conectar();
+    $out[]='';
+    $sql="SELECT * FROM enrollment";
+     $result = mysqli_query($conn, $sql);
+    while($resultado=mysqli_fetch_object($result)){
+    $out[]=$resultado;
     }
 
     desconectar($conn);
 return $out;       
 }
 
-/* muestra asignaturas SIN profesor asignado */
-function muestraSinAsignar(){
-     $conn = conectar();
-     $out[]='';
-     $sql = "SELECT * FROM  class WHERE id_teacher IS NULL";
-     $result = mysqli_query($conn, $sql);
-      while($resultado=mysqli_fetch_object($result)){
-        $out[]=$resultado;
-    }
 
+/* borra un alumno pasando su id*/
+
+function borraMatricula($id){
+    $conn = conectar();
+    $sql = "DELETE FROM enrollment WHERE id_enrollment='$id'";
+    $result = mysqli_query($conn, $sql);
     desconectar($conn);
-return $out;       
 }
+
+
 
 
 /* Desahce asignacion PROFESOR - ASIGNATURA */
+/*
 function desasignaProfe($idteacher,$idclass){
     
       $conn = conectar();
@@ -96,31 +120,32 @@ function desasignaProfe($idteacher,$idclass){
       $result2 = mysqli_query($conn, $sql2);
       desconectar($conn);
 }
-
-/* Hace emparejamiento PROFESOR - ASIGMATURA */
-function empareja($profesor, $clase){
-     $conn = conectar();
-     $sql = "UPDATE class SET id_teacher='$profesor' WHERE id_class='$clase'";
-     $sql2 = 'UPDATE teachers SET asignado=1 WHERE id_teacher="'.$profesor.'"';
-     $result = mysqli_query($conn, $sql);
-     desconectar($conn);
-     $conn = conectar();
-     $result2 = mysqli_query($conn, $sql2);
-     desconectar($conn);
-     
-}
+*/
 
 
 
+$arrayAlumnosSinCurso = alumnosSinCurso();
+$totalAlumnosSinCurso = sizeof($arrayAlumnosSinCurso);
+
+
+$arrayCursos = cargamosCursos();
+$totalCursos = sizeof($arrayCursos);
+
+$arrayMatriculas = cargaMatriculas();
+$totalMatriculas = sizeof($arrayMatriculas);
+
+/*
 $totalAsignaciones = sizeof(muestraAsignaciones());
 $arrayAsignaciones = muestraAsignaciones();
 
 $arraySinAsignar = muestraSinAsignar();
 $totalSinAsignar = sizeof(muestraSinAsignar());
 
-
+/*
 $arrayProfes = cargamosProfesores();
 $totalProfesores = sizeof(cargamosProfesores());
 
 $arrayAsignaturas = cargamosAsignaturas();
 $totalAsignaturas = sizeof(cargamosAsignaturas());
+ * 
+ */

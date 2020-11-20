@@ -33,7 +33,7 @@ function borraAsignatura($id){
     $conn = conectar();
     $sql = 'DELETE FROM  class WHERE id_class="'.$id.'"';
     $result = mysqli_query($conn, $sql);
-    desconectar($conn);
+   // desconectar($conn);
 
     
 }
@@ -44,7 +44,7 @@ function generaAsignatura($nombre,$color){
     $conn = conectar();
     $sql = "INSERT INTO class (name, color) VALUES ('$nombre','$color')";
     $result = mysqli_query($conn, $sql);
-    desconectar($conn);
+    //desconectar($conn);
 
 }
 
@@ -52,7 +52,7 @@ function actualizAsignatura($nombre,$color,$id){
     $conn = conectar();
     $sql = "UPDATE class SET name='$nombre', color='$color' WHERE id_class='$id'";
     $result = mysqli_query($conn, $sql);
-    desconectar($conn);
+    //desconectar($conn);
 
 }
 
