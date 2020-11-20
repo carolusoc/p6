@@ -11,7 +11,7 @@ include CONT.'_indexController.php';
         <meta charset="UTF-8">
         <title><?php echo($title); ?></title>
     </head>
-    <body>
+    <body id="<?php echo $id; ?>">
         <?php  
         include 'common/_adminPanelNav.php';
         include VIEW.$pagina; 

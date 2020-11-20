@@ -6,8 +6,6 @@ include CONT.'_registerController.php';
 include MOD.'_loginModel.php';
 include CONT.'_loginController.php';
 ?>
-echo $_POST['user'];
-?>
 <!DOCTYPE html>
 <html>
     <head>

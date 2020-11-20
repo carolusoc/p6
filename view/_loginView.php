@@ -1,6 +1,20 @@
 <?php 
 include MOD.'_loginModel.php';
 include CONT.'_loginController.php';
+/*
+echo '<pre>sesion<br>';
+print_r($_SESSION);
+echo '-----admin<br>';
+if (isset($resultadoAdmin)){
+print_r($resultadoAdmin);
+}
+echo '-----estudiante<br>';
+if (isset($resultado)){
+print_r($resultado);
+}
+echo '</pre>';
+*/
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +32,7 @@ include CONT.'_loginController.php';
       
             <div class="form-group">
               <label for="exampleInputEmail1">Usuario</label>
-              <input type="text" class="form-control" name="user" id="usuario" aria-describedby="emailHelp" required>
+              <input autofocus="true" type="text" class="form-control" name="user" id="usuario" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -29,5 +43,24 @@ include CONT.'_loginController.php';
            
     </form>
 </div>
+     
+        <script>
+if (window.history.replaceState) { // verificamos disponibilidad
+    window.history.replaceState(null, null, window.location.href);
+}
+
+
+</script>
+        
+        
+ <?php 
+if($reload){
+echo '<script>location.reload();</script>';
+
+
+    
+}
+?>
+        
     </body>
 </html>
