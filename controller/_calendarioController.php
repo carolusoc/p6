@@ -1,8 +1,30 @@
 <?php
+$reload=false;
+$mantiene='';
+$trash='<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg>';
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
+if (isset($_POST['erasethis'])){
+    print_r($_POST);
+    $id = $_POST['erasethis'];
+    borraHorarioID($id);
+    $reload=true;
+}  
+
+
+if (isset($_POST['clase'])){
+    echo $_POST['clase'];
+    $mantiene = $_POST['clase'];
+    
+    guardaHorario($_POST['clase'],$_POST['dia'], $_POST['horaini'], $_POST['horafin']);
+    
+}
+
+if (isset($_GET['ider'])){
+    $mantiene=$_GET['ider'];
+    
+    
+}

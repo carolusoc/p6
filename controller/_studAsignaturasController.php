@@ -1,7 +1,5 @@
 <?php
 $reload = false;
-
-/* comprobamos si he activado el forumario de crear asignatura*/
 if ( isset($_POST['name']) && isset($_POST['color']) && !isset($_POST['accion'])) {
     generaAsignatura($_POST['name'],$_POST['color']);
    // header("Location: ?pag=_asignaturasView.php");
