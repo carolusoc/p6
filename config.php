@@ -18,3 +18,4 @@ define('USER_DB', 'root'); // usuario de la base de datos
 define('PASS_DB', ''); // contraseña de la base de datos
 define('NAME_DB', 'basedatos'); // nombre de la base de datos
 
+define('RELOAD','echo "<script>location.reload()</script>"');

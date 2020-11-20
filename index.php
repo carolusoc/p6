@@ -1,5 +1,12 @@
 <?php
 include ('config.php'); 
+include ('funciones.php');
+
+if (isset($_POST['exit']) && ($_POST['exit']=='Salir')){
+    salir();
+}
+
+
 
 /* definimos tipo de usuario por defecto*/
 if(!isset($_SESSION['rol'])){
